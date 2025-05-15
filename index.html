@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>КнигаМания - Онлайн библиотека</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- Навигационная панель -->
+  <nav class="navbar">
+    <div class="navbar-container">
+      <div class="logo-container">
+        <h1 class="logo">КнигаМания</h1>
+      </div>
+      <div class="menu-container">
+        <div class="menu-list">
+         
+        </div>
+      </div>
+      <div class="search-container">
+        <input type="text" class="search-input" placeholder="Поиск книг...">
+        <button class="search-button">
+          <i class="fas fa-search"></i>
+        </button>
+      </div>
+      
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Боковая панель -->
+  <aside class="sidebar">
+    <div class="menu-item active" data-page="home" aria-label="Главная">
+      <i class="fas fa-home"></i>
+    </div>
+    <div class="menu-item" data-page="categories" aria-label="Жанры">
+      <i class="fas fa-list"></i>
+    </div>
+    <div class="menu-item" id="themeToggle" aria-label="Сменить тему">
+      <i class="fas fa-moon"></i>
+    </div>
+  </aside>
+
+  <!-- Основной контент -->
+  <main class="container">
+    <!-- Главная страница -->
+    <div class="content-page active" id="home">
+      <div class="featured-content">
+        <div class="featured-text">
+          <h1 class="featured-title">Добро пожаловать в КнигаМанию</h1>
+          <p class="featured-description">
+            Ваша персональная онлайн-библиотека. Читайте книги в любое время и в любом месте. 
+            Тысячи произведений ждут вас: от классики до современных бестселлеров.
+          </p>
+        </div>
+        <img src="img/book.png" alt="Изображение книги" class="featured-image" />
+      </div>
+
+      <div class="categories-container">
+        <h2>Категории</h2>
+        <div class="categories-grid">
+          <div class="category-item active" data-genre="all">
+            <i class="fas fa-book"></i>
+            <span>Все книги</span>
+          </div>
+          <div class="category-item" data-genre="Исторический роман">
+            <i class="fas fa-landmark"></i>
+            <span>Исторические</span>
+          </div>
+          <div class="category-item" data-genre="Поэзия">
+            <i class="fas fa-feather-alt"></i>
+            <span>Поэзия</span>
+          </div>
+          <div class="category-item" data-genre="Историческая проза">
+            <i class="fas fa-scroll"></i>
+            <span>Историческая проза</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="book-list-container">
+        <h2>Книги</h2>
+        <div class="book-list-wrapper">
+          <div class="book-list-item" data-book-id="samurai">
+            <img src="img/Самурай.jpg" alt="Самурай без меча" class="book-list-item-img">
+            <span class="book-list-item-title">Самурай без меча</span>
+            <div class="book-actions">
+              <button class="read-button" onclick="openPDF('samurai')">Читать</button>
+              <button class="download-button" onclick="downloadPDF('samurai')">
+                <i class="fab fa-google-drive"></i>
+              </button>
+            </div>
+          </div>
+
+          <div class="book-list-item" data-book-id="aitmatov">
+            <img src="img/Чынгыз.jpg" alt="И дольше века длится день" class="book-list-item-img">
+            <span class="book-list-item-title">И дольше века длится день</span>
+            <div class="book-actions">
+              <button class="read-button" onclick="openPDF('aitmatov')">Читать</button>
+              <button class="download-button" onclick="downloadPDF('aitmatov')">
+                <i class="fab fa-google-drive"></i>
+              </button>
+            </div>
+          </div>
+
+          <div class="book-list-item" data-book-id="tolstoy">
+            <img src="img/лев толстой.jpg" alt="Война и мир" class="book-list-item-img">
+            <span class="book-list-item-title">Война и мир</span>
+            <div class="book-actions">
+              <button class="read-button" onclick="openPDF('tolstoy')">Читать</button>
+              <button class="download-button" onclick="downloadPDF('tolstoy')">
+                <i class="fab fa-google-drive"></i>
+              </button>
+            </div>
+          </div>
+
+          <div class="book-list-item" data-book-id="navoi">
+            <img src="img/Алишер.jpg" alt="Стихи" class="book-list-item-img">
+            <span class="book-list-item-title">Стихи</span>
+            <div class="book-actions">
+              <button class="read-button" onclick="openPDF('navoi')">Читать</button>
+              <button class="download-button" onclick="downloadPDF('navoi')">
+                <i class="fab fa-google-drive"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Страница библиотеки -->
+    <div class="content-page" id="library">
+      <h2 class="section-title">Моя библиотека</h2>
+      <div class="book-list-wrapper">
+        <!-- Книги будут загружены через JavaScript -->
+      </div>
+    </div>
+
+    <!-- Страница жанров -->
+    <div class="content-page" id="genres">
+      <h2 class="section-title">Жанры</h2>
+      <div class="categories-grid">
+        <!-- Жанры будут загружены через JavaScript -->
+      </div>
+    </div>
+
+    <!-- Страница популярного -->
+    <div class="content-page" id="popular">
+      <h2 class="section-title">Популярные книги</h2>
+      <div class="book-list-wrapper">
+        <!-- Популярные книги будут загружены через JavaScript -->
+      </div>
+    </div>
+
+    <!-- Страница новинок -->
+    <div class="content-page" id="new">
+      <h2 class="section-title">Новинки</h2>
+      <div class="book-list-wrapper">
+        <!-- Новинки будут загружены через JavaScript -->
+      </div>
+    </div>
+  </main>
+
+  <!-- Подключаем JavaScript -->
+  <script src="app.js"></script>
+</body>
+</html>
